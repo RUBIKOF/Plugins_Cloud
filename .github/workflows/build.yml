@@ -30,7 +30,7 @@ jobs:
           path: "builds"
       
       - name: Clean old builds
-        run: rm $GITHUB_WORKSPACE/builds/*.cs3
+        run: rm $GITHUB_WORKSPACE/builds/*.cs3 || true
 
       - name: Setup JDK 17
         uses: actions/setup-java@v1
@@ -44,12 +44,9 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/src
           chmod +x gradlew
-          ./gradlew make makePluginsJson --warning-mode all
+          ./gradlew make makePluginsJson
           cp **/build/*.cs3 $GITHUB_WORKSPACE/builds
           cp build/plugins.json $GITHUB_WORKSPACE/builds
-      
-      - name: Save build logs
-        run: ./gradlew build --warning-mode all > $GITHUB_WORKSPACE/builds/build_logs.txt
 
       - name: Push builds
         run: |
