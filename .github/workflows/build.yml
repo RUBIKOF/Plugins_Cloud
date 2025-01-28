@@ -37,9 +37,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Set up JAVA_HOME
-        run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
