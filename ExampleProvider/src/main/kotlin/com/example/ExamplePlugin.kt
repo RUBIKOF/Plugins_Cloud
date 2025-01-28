@@ -21,4 +21,5 @@ class TestPlugin: Plugin() {
             frag.show(activity!!.supportFragmentManager, "Frag")
         }
     }
+    
 }
